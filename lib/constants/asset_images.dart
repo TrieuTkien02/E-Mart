@@ -5,4 +5,6 @@ class AssetsImages {
 
   final String welcomeImage = "$_imagesPath/welcome.png";
   final String googleLogo = "$_imagesPath/googlelogo.png";
+  final String AppLogo = "$_imagesPath/logo.png";
+
 }
