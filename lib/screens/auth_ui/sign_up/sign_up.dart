@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:e_mart/screens/auth_ui/login/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -129,7 +130,8 @@ class _SignUpState extends State<SignUp> {
               Center(
                 child: CupertinoButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Routes.instance
+                        .push(widget: const Login(), context: context);
                   },
                   child: Text(
                     "Login",
