@@ -1,6 +1,12 @@
 import 'package:e_mart/constants/asset_images.dart';
+import 'package:e_mart/screens/auth_ui/login/login.dart';
+import 'package:e_mart/screens/auth_ui/sign_up/sign_up.dart';
+import 'package:e_mart/widgets/primary_button/primary_button.dart';
+import 'package:e_mart/widgets/top_titles/top_titles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../../constants/routes.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
@@ -11,20 +17,9 @@ class Welcome extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(
-            height: kToolbarHeight,
-          ),
-          const Text(
-            "Welcome to E Mart",
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(
-            height: 12,
-          ),
-          const Text("Buy any item from using app"),
+          const TopTitles(
+              subtitle: "Buy AnyItems From Using App",
+              title: "Welcome to E-Mart"),
           Center(
               child: Image.asset(
             AssetsImages.instance.AppLogo,
@@ -56,15 +51,22 @@ class Welcome extends StatelessWidget {
             ],
           ),
           const SizedBox(
+            height: 30.0,
+          ),
+          PrimaryButton(
+            title: "Login",
+            onPressed: () {
+              Routes.instance.push(widget: const Login(), context: context);
+            },
+          ),
+          const SizedBox(
             height: 18.0,
           ),
-          SizedBox(
-            height: 45,
-            width:ouble.infinity,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: const Text("Login"),
-            ),
+          PrimaryButton(
+            title: "Sign Up",
+            onPressed: () {
+              Routes.instance.push(widget: const SignUp(), context: context);
+            },
           ),
         ],
       ),

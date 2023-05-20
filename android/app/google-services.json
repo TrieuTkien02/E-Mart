@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "252769608934",
+    "project_id": "e-mart-62144",
+    "storage_bucket": "e-mart-62144.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252769608934:android:53a9783d5274bf03eb4727",
+        "android_client_info": {
+          "package_name": "com.example.e_mart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252769608934-q4nv5utersgdbealjnc4luo7qm4dretr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx0CDNio8Kk2e-PnyvG29_LFdd75g7mFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252769608934-q4nv5utersgdbealjnc4luo7qm4dretr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
