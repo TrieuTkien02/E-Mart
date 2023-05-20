@@ -60,7 +60,7 @@ class Welcome extends StatelessWidget {
           ),
           SizedBox(
             height: 45,
-            width: double.infinity,
+            width:ouble.infinity,
             child: ElevatedButton(
               onPressed: () {},
               child: const Text("Login"),
