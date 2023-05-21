@@ -1,6 +1,5 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, unused_local_variable
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_mart/constants/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 class FirebaseAuthHelper {
   static FirebaseAuthHelper instance = FirebaseAuthHelper();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   Stream<User?> get getAuthChange => _auth.authStateChanges();
 
   Future<bool> login(
