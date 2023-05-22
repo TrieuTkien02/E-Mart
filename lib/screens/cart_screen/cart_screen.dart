@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../constants/constants.dart';
 import '../../provider/app_provider.dart';
 import '../../widgets/primary_button.dart';
@@ -8,7 +7,6 @@ import 'single_cart_item.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
-
   @override
   State<CartScreen> createState() => _CartScreenState();
 }
@@ -31,7 +29,7 @@ class _CartScreenState extends State<CartScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    "Total",
+                    "Tổng",
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
@@ -50,13 +48,13 @@ class _CartScreenState extends State<CartScreen> {
                 height: 24.0,
               ),
               PrimaryButton(
-                title: "Checkout",
+                title: "Thanh toán",
                 onPressed: () {
                   appProvider.clearBuyProduct();
                   appProvider.addBuyProductCartList();
                   appProvider.clearCart();
                   if (appProvider.getBuyProductList.isEmpty) {
-                    showMessage("Cart is empty");
+                    showMessage("Giỏ hàng trống");
                   } else {
                     // Routes.instance.push(
                     //     widget: const CartItemCheckout(), context: context);
@@ -69,17 +67,17 @@ class _CartScreenState extends State<CartScreen> {
       ),
       appBar: AppBar(
         centerTitle: true,
-        // backgroundColor: Colo,
         title: const Text(
-          "Cart",
+          "Giỏ hàng",
           style: TextStyle(
             color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
       body: appProvider.getCartProductList.isEmpty
           ? const Center(
-              child: Text("Empty"),
+              child: Text(""),
             )
           : ListView.builder(
               itemCount: appProvider.getCartProductList.length,

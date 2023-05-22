@@ -5,12 +5,10 @@ import 'package:e_mart/widgets/primary_button.dart';
 import 'package:e_mart/widgets/top_titles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../constants/routes.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +16,8 @@ class Welcome extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const TopTitles(
-              subtitle: "Buy AnyItems From Using App",
-              title: "Welcome to E-Mart"),
+              subtitle: "Mua bất cứ món gì khi dùng E-Mart",
+              title: "Chào mừng đến với E-Mart"),
           Center(
               child: Image.asset(
             AssetsImages.instance.AppLogo,
@@ -54,7 +52,7 @@ class Welcome extends StatelessWidget {
             height: 30.0,
           ),
           PrimaryButton(
-            title: "Login",
+            title: "Đăng nhập",
             onPressed: () {
               Routes.instance.push(widget: const Login(), context: context);
             },
@@ -63,7 +61,7 @@ class Welcome extends StatelessWidget {
             height: 18.0,
           ),
           PrimaryButton(
-            title: "Sign Up",
+            title: "Đăng ký",
             onPressed: () {
               Routes.instance.push(widget: const SignUp(), context: context);
             },

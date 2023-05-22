@@ -6,6 +6,7 @@ import '../constants/routes.dart';
 import '../models/product_model.dart';
 import '../provider/app_provider.dart';
 import 'cart_screen/cart_screen.dart';
+import 'checkout.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductModel singleProduct;
@@ -58,19 +59,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                   const SizedBox(
                     height: 60.00,
                   ),
-                  
                 ],
               ),
-
               Text(
                 widget.singleProduct.description,
-                textAlign: TextAlign.left, 
+                textAlign: TextAlign.left,
                 softWrap: true,
                 textScaleFactor: 1.2,
-                style: const TextStyle(
-                  fontSize: 14,
-                  wordSpacing: 1.5),
-                ),
+                style: const TextStyle(fontSize: 14, wordSpacing: 1.5),
+              ),
               const SizedBox(
                 height: 30.00,
               ),
@@ -133,11 +130,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                             .contains(widget.singleProduct)
                         ? Icons.favorite
                         : Icons.favorite_border),
-                        iconSize: 40,
+                    iconSize: 40,
                   ),
-                ],          
+                ],
               ),
-              // const Spacer(),
               const SizedBox(
                 height: 24.0,
               ),
@@ -149,9 +145,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ProductModel productModel =
                           widget.singleProduct.copyWith(qty: qty);
                       appProvider.addCartProduct(productModel);
-                      showMessage("Added to Cart");
+                      showMessage("Đã thêm vào giỏ hàng");
                     },
-                    child: const Text("ADD TO CART"),
+                    child: const Text("Thêm vào giỏ hàng"),
                   ),
                   const SizedBox(
                     width: 24.0,
@@ -161,13 +157,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                     width: 140,
                     child: ElevatedButton(
                       onPressed: () {
-                        // ProductModel productModel =
-                        //     widget.singleProduct.copyWith(qty: qty);
-                        // Routes.instance.push(
-                        //     widget: Checkout(singleProduct: productModel),
-                        //     context: context);
+                        ProductModel productModel =
+                            widget.singleProduct.copyWith(qty: qty);
+                        Routes.instance.push(
+                            widget: Checkout(singleProduct: productModel),
+                            context: context);
                       },
-                      child: const Text("BUY"),
+                      child: const Text("Mua"),
                     ),
                   ),
                 ],

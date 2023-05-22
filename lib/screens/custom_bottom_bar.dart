@@ -1,6 +1,10 @@
-// ignore_for_file: library_private_types_in_public_api, no_logic_in_create_state
-
+// ignore_for_file: library_private_types_in_public_api
+import 'package:e_mart/screens/account_screen.dart';
+import 'package:e_mart/screens/favourite_screen/favourite_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'cart_screen/cart_screen.dart';
+import 'home.dart';
 
 class CustomBottomBar extends StatefulWidget {
   const CustomBottomBar({
@@ -8,8 +12,78 @@ class CustomBottomBar extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() {
-   
-    throw UnimplementedError();
-  }
+  _CustomBottomBarState createState() => _CustomBottomBarState();
+}
+
+class _CustomBottomBarState extends State<CustomBottomBar> {
+  final PersistentTabController _controller = PersistentTabController();
+  final bool _hideNavBar = false;
+
+  List<Widget> _buildScreens() => [
+        const Home(),
+        const CartScreen(),
+        const FavouriteScreen(),
+        const AccountScreen(),
+        // const OrderScreen(),
+        // const AccountScreen(),
+      ];
+
+  List<PersistentBottomNavBarItem> _navBarsItems() => [
+        PersistentBottomNavBarItem(
+          icon: const Icon(Icons.home),
+          inactiveIcon: const Icon(Icons.home_outlined),
+          title: "Trang chủ",
+          activeColorPrimary: Colors.white,
+          inactiveColorPrimary: Colors.white,
+        ),
+        PersistentBottomNavBarItem(
+          icon: const Icon(Icons.shopping_cart),
+          inactiveIcon: const Icon(Icons.shopping_cart_outlined),
+          title: "Giỏ hàng",
+          activeColorPrimary: Colors.white,
+          inactiveColorPrimary: Colors.white,
+        ),
+        PersistentBottomNavBarItem(
+          icon: const Icon(Icons.assignment),
+          inactiveIcon: const Icon(Icons.assignment_outlined),
+          title: "Đơn hàng",
+          activeColorPrimary: Colors.white,
+          inactiveColorPrimary: Colors.white,
+        ),
+        PersistentBottomNavBarItem(
+          icon: const Icon(Icons.person),
+          inactiveIcon: const Icon(Icons.person_outline),
+          title: "Tài khoản",
+          activeColorPrimary: Colors.white,
+          inactiveColorPrimary: Colors.white,
+        ),
+      ];
+
+  @override
+  Widget build(final BuildContext context) => Scaffold(
+        body: PersistentTabView(
+          context,
+          controller: _controller,
+          screens: _buildScreens(),
+          items: _navBarsItems(),
+          resizeToAvoidBottomInset: true,
+          navBarHeight: MediaQuery.of(context).viewInsets.bottom > 0
+              ? 0.0
+              : kBottomNavigationBarHeight,
+          bottomScreenMargin: 0,
+
+          backgroundColor: Theme.of(context).primaryColor,
+          hideNavigationBar: _hideNavBar,
+          decoration: const NavBarDecoration(colorBehindNavBar: Colors.indigo),
+          itemAnimationProperties: const ItemAnimationProperties(
+            duration: Duration(milliseconds: 400),
+            curve: Curves.ease,
+          ),
+          screenTransitionAnimation: const ScreenTransitionAnimation(
+            animateTabTransition: true,
+          ),
+          navBarStyle:
+              NavBarStyle.style1, 
+        ),
+      );
 }

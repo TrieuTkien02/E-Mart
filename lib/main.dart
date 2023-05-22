@@ -2,7 +2,7 @@ import 'package:e_mart/provider/app_provider.dart';
 import 'package:e_mart/screens/auth_ui/welcome.dart';
 import 'package:e_mart/firebase_helper/firebase_options.dart';
 import 'package:e_mart/firebase_helper/firebase_auth_helper.dart';
-import 'package:e_mart/screens/home.dart';
+import 'package:e_mart/screens/custom_bottom_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           stream: FirebaseAuthHelper.instance.getAuthChange,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return const Home();
+              return const CustomBottomBar();
             }
             return const Welcome();
           },

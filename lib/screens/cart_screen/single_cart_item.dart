@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../constants/constants.dart';
 import '../../models/product_model.dart';
 import '../../provider/app_provider.dart';
@@ -9,7 +8,6 @@ import '../../provider/app_provider.dart';
 class SingleCartItem extends StatefulWidget {
   final ProductModel singleProduct;
   const SingleCartItem({super.key, required this.singleProduct});
-
   @override
   State<SingleCartItem> createState() => _SingleCartItemState();
 }
@@ -41,7 +39,7 @@ class _SingleCartItemState extends State<SingleCartItem> {
           Expanded(
             child: Container(
               height: 140,
-              color:Theme.of(context).primaryColor.withOpacity(0.5),
+              color: Theme.of(context).primaryColor.withOpacity(0.5),
               child: Image.network(
                 widget.singleProduct.image,
               ),
@@ -119,54 +117,52 @@ class _SingleCartItemState extends State<SingleCartItem> {
                             ),
                           ],
                         ),
-                        
                       ],
                     ),
                     Row(
                       children: [
                         CupertinoButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: () {
-                                if (!appProvider.getFavouriteProductList
-                                    .contains(widget.singleProduct)) {
-                                  appProvider.addFavouriteProduct(
-                                      widget.singleProduct);
-                                  showMessage("Added to wishlist");
-                                } else {
-                                  appProvider.removeFavouriteProduct(
-                                      widget.singleProduct);
-                                  showMessage("Removed to wishlist");
-                                }
-                              },
-                              child: Text(
-                                appProvider.getFavouriteProductList
-                                        .contains(widget.singleProduct)
-                                    ? "Remove to wishlist"
-                                    : "Add to wishlist",
-                                style: const TextStyle(
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                          padding: EdgeInsets.zero,
+                          onPressed: () {
+                            if (!appProvider.getFavouriteProductList
+                                .contains(widget.singleProduct)) {
+                              appProvider
+                                  .addFavouriteProduct(widget.singleProduct);
+                              showMessage("Yêu thích");
+                            } else {
+                              appProvider
+                                  .removeFavouriteProduct(widget.singleProduct);
+                              showMessage("Bỏ yêu thích");
+                            }
+                          },
+                          child: Text(
+                            appProvider.getFavouriteProductList
+                                    .contains(widget.singleProduct)
+                                ? "Bỏ yêu thích"
+                                : "Yêu thích",
+                            style: const TextStyle(
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.bold,
                             ),
-                            const SizedBox(
-                              width: 30.0,
-                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 30.0,
+                        ),
                         Text(
-                              "\$${widget.singleProduct.price.toString()}",
-                              style: const TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            
+                          "\$${widget.singleProduct.price.toString()}",
+                          style: const TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                     CupertinoButton(
                         padding: EdgeInsets.zero,
                         onPressed: () {
                           appProvider.removeCartProduct(widget.singleProduct);
-                          showMessage("Removed from Cart");
+                          showMessage("Xóa khỏi giỏ hàng");
                         },
                         child: const CircleAvatar(
                           maxRadius: 13,

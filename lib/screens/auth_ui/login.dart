@@ -1,20 +1,16 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../constants/constants.dart';
 import '../../constants/routes.dart';
 import '../../firebase_helper/firebase_auth_helper.dart';
 import '../../widgets/primary_button.dart';
 import '../../widgets/top_titles.dart';
+import '../custom_bottom_bar.dart';
 import 'sign_up.dart';
-import 'package:e_mart/screens/home.dart';
-
 
 class Login extends StatefulWidget {
   const Login({super.key});
-
   @override
   State<Login> createState() => _LoginState();
 }
@@ -22,7 +18,6 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
-
   bool isShowPassword = true;
   @override
   Widget build(BuildContext context) {
@@ -34,7 +29,7 @@ class _LoginState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TopTitles(
-                  subtitle: "Welcome Back To E-Mart App", title: "Login"),
+                  subtitle: "Chào mừng bạn đến với E-Mart", title: "Đăng nhập"),
               const SizedBox(
                 height: 46.0,
               ),
@@ -55,7 +50,7 @@ class _LoginState extends State<Login> {
                 controller: password,
                 obscureText: isShowPassword,
                 decoration: InputDecoration(
-                  hintText: "Password",
+                  hintText: "Mật khẩu",
                   prefixIcon: const Icon(
                     Icons.password_sharp,
                   ),
@@ -66,7 +61,7 @@ class _LoginState extends State<Login> {
                         });
                       },
                       padding: EdgeInsets.zero,
-                      child:  Icon(
+                      child: Icon(
                         isShowPassword
                             ? Icons.visibility
                             : Icons.visibility_off,
@@ -78,7 +73,7 @@ class _LoginState extends State<Login> {
                 height: 36.0,
               ),
               PrimaryButton(
-                title: "Login",
+                title: "Đăng nhập",
                 onPressed: () async {
                   bool isVaildated = loginVaildation(email.text, password.text);
                   if (isVaildated) {
@@ -86,7 +81,7 @@ class _LoginState extends State<Login> {
                         .login(email.text, password.text, context);
                     if (isLogined) {
                       Routes.instance.pushAndRemoveUntil(
-                          widget: const Home(), context: context);
+                          widget: const CustomBottomBar(), context: context);
                     }
                   }
                 },
@@ -94,7 +89,7 @@ class _LoginState extends State<Login> {
               const SizedBox(
                 height: 24.0,
               ),
-              const Center(child: Text("Don't have an account?")),
+              const Center(child: Text("Chưa có tài khoản?")),
               const SizedBox(
                 height: 12.0,
               ),
@@ -105,7 +100,7 @@ class _LoginState extends State<Login> {
                         .push(widget: const SignUp(), context: context);
                   },
                   child: Text(
-                    "Create an account",
+                    "Tạo tài khoản",
                     style: TextStyle(color: Theme.of(context).primaryColor),
                   ),
                 ),

@@ -4,9 +4,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 void showMessage(String message) {
   Fluttertoast.showToast(
     msg: message,
+    gravity: ToastGravity.CENTER,
     backgroundColor: Colors.red,
     textColor: Colors.white,
-    fontSize: 16.0,
+    fontSize: 20.0,
   );
 }
 

@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import '../constants/routes.dart';
-import '../firebase_helper/firebase_store.dart';
+import '../firebase_helper/firebase_firestore.dart';
 import '../models/category_model.dart';
 import '../models/product_model.dart';
 import '../provider/app_provider.dart';
-import '../widgets/top_titles.dart';
 import 'category_view.dart';
 import 'product_details.dart';
 
@@ -24,8 +23,8 @@ class _HomeState extends State<Home> {
   bool isLoading = false;
   @override
   void initState() {
-    // AppProvider appProvider = Provider.of<AppProvider>(context, listen: false);
-    // appProvider.getUserInfoFirebase();
+    AppProvider appProvider = Provider.of<AppProvider>(context, listen: false);
+    appProvider.getUserInfoFirebase();
     getCategoryList();
     super.initState();
   }
@@ -34,7 +33,7 @@ class _HomeState extends State<Home> {
     setState(() {
       isLoading = true;
     });
-    //FirebaseFirestoreHelper.instance.updateTokenFromFirebase();
+    FirebaseFirestoreHelper.instance.updateTokenFromFirebase();
     categoriesList = await FirebaseFirestoreHelper.instance.getCategories();
     productModelList = await FirebaseFirestoreHelper.instance.getBestProducts();
 
@@ -77,20 +76,24 @@ class _HomeState extends State<Home> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const TopTitles(subtitle: "", title: "E Mart"),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         TextFormField(
                           controller: search,
                           onChanged: (String value) {
                             searchProducts(value);
                           },
-                          decoration:
-                              const InputDecoration(hintText: "Search...."),
+                          decoration: const InputDecoration(
+                              prefixIcon: Icon(Icons.search),
+                              hintText: "Tìm kiếm sản phẩm...."),
+                          autofocus: false,
                         ),
                         const SizedBox(
                           height: 24.0,
                         ),
                         const Text(
-                          "Categories",
+                          "Danh mục",
                           style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
@@ -101,7 +104,7 @@ class _HomeState extends State<Home> {
                   ),
                   categoriesList.isEmpty
                       ? const Center(
-                          child: Text("Categories is empty"),
+                          child: Text("Danh mục trống"),
                         )
                       : SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
@@ -144,7 +147,7 @@ class _HomeState extends State<Home> {
                       ? const Padding(
                           padding: EdgeInsets.only(top: 12.0, left: 12.0),
                           child: Text(
-                            "Best Products",
+                            "Sản phẩm bán chạy",
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
@@ -157,7 +160,7 @@ class _HomeState extends State<Home> {
                   ),
                   search.text.isNotEmpty && searchList.isEmpty
                       ? const Center(
-                          child: Text("No Product Found"),
+                          child: Text("Không tìm thấy sản phẩm"),
                         )
                       : searchList.isNotEmpty
                           ? Padding(
@@ -181,7 +184,6 @@ class _HomeState extends State<Home> {
                                         color: Theme.of(context)
                                             .primaryColor
                                             .withOpacity(0.2),
-                                       
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                       ),
@@ -212,7 +214,7 @@ class _HomeState extends State<Home> {
                                             height: 12.0,
                                           ),
                                           Text(
-                                              "Price: \$${singleProduct.price}"),
+                                              "Giá: \$${singleProduct.price}"),
                                           const SizedBox(
                                             height: 20.0,
                                           ),
@@ -228,7 +230,7 @@ class _HomeState extends State<Home> {
                                                     context: context);
                                               },
                                               child: const Text(
-                                                'Buy',
+                                                'Mua',
                                                 style: TextStyle(
                                                   fontSize: 17,
                                                   fontWeight: FontWeight.bold,
@@ -243,7 +245,7 @@ class _HomeState extends State<Home> {
                             )
                           : productModelList.isEmpty
                               ? const Center(
-                                  child: Text("Best Product is empty"),
+                                  child: Text("Sản phẩm trống"),
                                 )
                               : Padding(
                                   padding: const EdgeInsets.all(12.0),
@@ -297,7 +299,7 @@ class _HomeState extends State<Home> {
                                                 height: 12.0,
                                               ),
                                               Text(
-                                                  "Price: \$${singleProduct.price}"),
+                                                  "Giá: \$${singleProduct.price}"),
                                               const SizedBox(
                                                 height: 20.0,
                                               ),
@@ -313,12 +315,13 @@ class _HomeState extends State<Home> {
                                                         context: context);
                                                   },
                                                   child: const Text(
-                                                'Buy',
-                                                style: TextStyle(
-                                                  fontSize: 17,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
+                                                    'Mua',
+                                                    style: TextStyle(
+                                                      fontSize: 17,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                             ],

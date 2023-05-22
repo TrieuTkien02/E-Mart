@@ -1,16 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
-
-import 'package:e_mart/screens/auth_ui/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../constants/routes.dart';
 import '../../widgets/primary_button.dart';
 import '../../widgets/top_titles.dart';
-import 'package:e_mart/screens/home.dart';
 import 'package:e_mart/firebase_helper/firebase_auth_helper.dart';
 import 'package:e_mart/constants/constants.dart';
-
+import '../custom_bottom_bar.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -36,15 +32,15 @@ class _SignUpState extends State<SignUp> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TopTitles(
-                  subtitle: "Welcome Back To E Commerce App",
-                  title: "Create Account"),
+                  subtitle: "Chào mừng bạn đến với E-Mart",
+                  title: "Tạo tài khoản"),
               const SizedBox(
                 height: 46.0,
               ),
               TextFormField(
                 controller: name,
                 decoration: const InputDecoration(
-                  hintText: "Name",
+                  hintText: "Tên",
                   prefixIcon: Icon(
                     Icons.person_outline,
                   ),
@@ -70,7 +66,7 @@ class _SignUpState extends State<SignUp> {
                 controller: phone,
                 keyboardType: TextInputType.phone,
                 decoration: const InputDecoration(
-                  hintText: "Phone",
+                  hintText: "Số điện thoại",
                   prefixIcon: Icon(
                     Icons.phone_outlined,
                   ),
@@ -83,7 +79,7 @@ class _SignUpState extends State<SignUp> {
                 controller: password,
                 obscureText: isShowPassword,
                 decoration: InputDecoration(
-                  hintText: "Password",
+                  hintText: "Mật khẩu",
                   prefixIcon: const Icon(
                     Icons.password_sharp,
                   ),
@@ -94,10 +90,8 @@ class _SignUpState extends State<SignUp> {
                         });
                       },
                       padding: EdgeInsets.zero,
-                      child:  Icon(
-                        isShowPassword
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+                      child: const Icon(
+                        Icons.visibility,
                         color: Colors.grey,
                       )),
                 ),
@@ -106,7 +100,7 @@ class _SignUpState extends State<SignUp> {
                 height: 36.0,
               ),
               PrimaryButton(
-                title: "Create an account",
+                title: "Tạo tài khoản",
                 onPressed: () async {
                   bool isVaildated = signUpVaildation(
                       email.text, password.text, name.text, phone.text);
@@ -115,7 +109,7 @@ class _SignUpState extends State<SignUp> {
                         .signUp(name.text, email.text, password.text, context);
                     if (isLogined) {
                       Routes.instance.pushAndRemoveUntil(
-                          widget: const Home(), context: context);
+                          widget: const CustomBottomBar(), context: context);
                     }
                   }
                 },
@@ -123,18 +117,17 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 24.0,
               ),
-              const Center(child: Text("I have already an account?")),
+              const Center(child: Text("Đã có tài khoản?")),
               const SizedBox(
                 height: 12.0,
               ),
               Center(
                 child: CupertinoButton(
                   onPressed: () {
-                    Routes.instance
-                        .push(widget: const Login(), context: context);
+                    Navigator.of(context).pop();
                   },
                   child: Text(
-                    "Login",
+                    "Đăng nhập ngay",
                     style: TextStyle(color: Theme.of(context).primaryColor),
                   ),
                 ),

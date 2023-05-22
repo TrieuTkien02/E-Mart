@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants/routes.dart';
-import '../firebase_helper/firebase_store.dart';
+import '../firebase_helper/firebase_firestore.dart';
 import '../models/category_model.dart';
 import '../models/product_model.dart';
 import 'product_details.dart';
@@ -69,7 +69,7 @@ class _CategoryViewState extends State<CategoryView> {
                   ),
                   productModelList.isEmpty
                       ? const Center(
-                          child: Text("Product is empty"),
+                          child: Text("Sản phẩm trống"),
                         )
                       : Padding(
                           padding: const EdgeInsets.all(12.0),
@@ -121,7 +121,7 @@ class _CategoryViewState extends State<CategoryView> {
                                       const SizedBox(
                                         height: 12.0,
                                       ),
-                                      Text("Price: \$${singleProduct.price}"),
+                                      Text("Giá: \$${singleProduct.price}"),
                                       const SizedBox(
                                         height: 20.0,
                                       ),
