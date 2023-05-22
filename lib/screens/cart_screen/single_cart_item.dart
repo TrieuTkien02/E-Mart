@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/constants.dart';
-import '../../models/product_model/product_model.dart';
+import '../../models/product_model.dart';
 import '../../provider/app_provider.dart';
 
 class SingleCartItem extends StatefulWidget {

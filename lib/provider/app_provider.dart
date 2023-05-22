@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../models/product_model/product_model.dart';
+import '../models/product_model.dart';
 
 class AppProvider with ChangeNotifier {
   //// Cart Work

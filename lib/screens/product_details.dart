@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../constants/constants.dart';
-import '../../constants/routes.dart';
-import '../../models/product_model/product_model.dart';
-import '../../provider/app_provider.dart';
-import '../cart_screen/cart_screen.dart';
+import '../constants/constants.dart';
+import '../constants/routes.dart';
+import '../models/product_model.dart';
+import '../provider/app_provider.dart';
+import 'cart_screen/cart_screen.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductModel singleProduct;

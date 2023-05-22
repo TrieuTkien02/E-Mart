@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../../constants/constants.dart';
 import '../../provider/app_provider.dart';
-import '../../widgets/primary_button/primary_button.dart';
-import '../../widgets/single_cart_item/single_cart_item.dart';
+import '../../widgets/primary_button.dart';
+import 'single_cart_item.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});

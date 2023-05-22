@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../constants/constants.dart';
-import '../../models/category_model/category_model.dart';
-import '../../models/product_model/product_model.dart';
+import '../constants/constants.dart';
+import '../models/category_model.dart';
+import '../models/product_model.dart';
 
 
 class FirebaseFirestoreHelper {

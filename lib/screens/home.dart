@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants/routes.dart';
-import '../../firebase_helper/firebase_firestore_helper/firebase_store.dart';
-import '../../models/category_model/category_model.dart';
-import '../../models/product_model/product_model.dart';
-import '../../provider/app_provider.dart';
-import '../../widgets/top_titles/top_titles.dart';
-import '../category_view/category_view.dart';
-import '../product_details/product_details.dart';
+import '../constants/routes.dart';
+import '../firebase_helper/firebase_store.dart';
+import '../models/category_model.dart';
+import '../models/product_model.dart';
+import '../provider/app_provider.dart';
+import '../widgets/top_titles.dart';
+import 'category_view.dart';
+import 'product_details.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

@@ -1,31 +1,29 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:e_mart/screens/auth_ui/login/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants/routes.dart';
-import '../../../widgets/primary_button/primary_button.dart';
-import '../../../widgets/top_titles/top_titles.dart';
-import 'package:e_mart/screens/home/home.dart';
-import 'package:e_mart/firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
-import 'package:e_mart/constants/constants.dart';
+import '../../constants/constants.dart';
+import '../../constants/routes.dart';
+import '../../firebase_helper/firebase_auth_helper.dart';
+import '../../widgets/primary_button.dart';
+import '../../widgets/top_titles.dart';
+import 'sign_up.dart';
+import 'package:e_mart/screens/home.dart';
 
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SignUpState extends State<SignUp> {
-  bool isShowPassword = true;
-   TextEditingController password = TextEditingController();
+class _LoginState extends State<Login> {
   TextEditingController email = TextEditingController();
- 
-  TextEditingController name = TextEditingController();
-  TextEditingController phone = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  bool isShowPassword = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,22 +34,9 @@ class _SignUpState extends State<SignUp> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TopTitles(
-                  subtitle: "Welcome Back To E Commerce App",
-                  title: "Create Account"),
+                  subtitle: "Welcome Back To E-Mart App", title: "Login"),
               const SizedBox(
                 height: 46.0,
-              ),
-              TextFormField(
-                controller: name,
-                decoration: const InputDecoration(
-                  hintText: "Name",
-                  prefixIcon: Icon(
-                    Icons.person_outline,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 12.0,
               ),
               TextFormField(
                 controller: email,
@@ -60,19 +45,6 @@ class _SignUpState extends State<SignUp> {
                   hintText: "E-mail",
                   prefixIcon: Icon(
                     Icons.email_outlined,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 12.0,
-              ),
-              TextFormField(
-                controller: phone,
-                keyboardType: TextInputType.phone,
-                decoration: const InputDecoration(
-                  hintText: "Phone",
-                  prefixIcon: Icon(
-                    Icons.phone_outlined,
                   ),
                 ),
               ),
@@ -106,13 +78,12 @@ class _SignUpState extends State<SignUp> {
                 height: 36.0,
               ),
               PrimaryButton(
-                title: "Create an account",
+                title: "Login",
                 onPressed: () async {
-                  bool isVaildated = signUpVaildation(
-                      email.text, password.text, name.text, phone.text);
+                  bool isVaildated = loginVaildation(email.text, password.text);
                   if (isVaildated) {
                     bool isLogined = await FirebaseAuthHelper.instance
-                        .signUp(name.text, email.text, password.text, context);
+                        .login(email.text, password.text, context);
                     if (isLogined) {
                       Routes.instance.pushAndRemoveUntil(
                           widget: const Home(), context: context);
@@ -123,7 +94,7 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 24.0,
               ),
-              const Center(child: Text("I have already an account?")),
+              const Center(child: Text("Don't have an account?")),
               const SizedBox(
                 height: 12.0,
               ),
@@ -131,10 +102,10 @@ class _SignUpState extends State<SignUp> {
                 child: CupertinoButton(
                   onPressed: () {
                     Routes.instance
-                        .push(widget: const Login(), context: context);
+                        .push(widget: const SignUp(), context: context);
                   },
                   child: Text(
-                    "Login",
+                    "Create an account",
                     style: TextStyle(color: Theme.of(context).primaryColor),
                   ),
                 ),

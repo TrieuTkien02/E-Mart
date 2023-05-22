@@ -1,12 +1,12 @@
 import 'package:e_mart/constants/asset_images.dart';
-import 'package:e_mart/screens/auth_ui/login/login.dart';
-import 'package:e_mart/screens/auth_ui/sign_up/sign_up.dart';
-import 'package:e_mart/widgets/primary_button/primary_button.dart';
-import 'package:e_mart/widgets/top_titles/top_titles.dart';
+import 'package:e_mart/screens/auth_ui/login.dart';
+import 'package:e_mart/screens/auth_ui/sign_up.dart';
+import 'package:e_mart/widgets/primary_button.dart';
+import 'package:e_mart/widgets/top_titles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants/routes.dart';
+import '../../constants/routes.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
