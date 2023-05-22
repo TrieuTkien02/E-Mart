@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../constants/constants.dart';
+import '../../constants/routes.dart';
 import '../../models/product_model/product_model.dart';
+import '../../provider/app_provider.dart';
+import '../cart_screen/cart_screen.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductModel singleProduct;
@@ -14,16 +19,16 @@ class _ProductDetailsState extends State<ProductDetails> {
   int qty = 1;
   @override
   Widget build(BuildContext context) {
-    // AppProvider appProvider = Provider.of<AppProvider>(
-    //   context,
-    // );
+    AppProvider appProvider = Provider.of<AppProvider>(
+      context,
+    );
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
             onPressed: () {
-              // Routes.instance
-              //     .push(widget: const CartScreen(), context: context);
+              Routes.instance
+                  .push(widget: const CartScreen(), context: context);
             },
             icon: const Icon(Icons.shopping_cart),
           )
@@ -46,31 +51,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Text(
                     widget.singleProduct.name,
                     style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 17,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(
                     height: 60.00,
                   ),
-                  // IconButton(
-                  //   onPressed: () {
-                  //     setState(() {
-                  //       widget.singleProduct.isFavourite =
-                  //           !widget.singleProduct.isFavourite;
-                  //     });
-                  //     // if (widget.singleProduct.isFavourite) {
-                  //     //   appProvider.addFavouriteProduct(widget.singleProduct);
-                  //     // } else {
-                  //     //   appProvider
-                  //     //       .removeFavouriteProduct(widget.singleProduct);
-                  //     // }
-                  //   },
-                  //   icon: Icon(appProvider.getFavouriteProductList
-                  //           .contains(widget.singleProduct)
-                  //       ? Icons.favorite
-                  //       : Icons.favorite_border),
-                  // ),
+                  
                 ],
               ),
 
@@ -125,7 +113,29 @@ class _ProductDetailsState extends State<ProductDetails> {
                       child: Icon(Icons.add),
                     ),
                   ),
-                ],
+                  const SizedBox(
+                    width: 200,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        widget.singleProduct.isFavourite =
+                            !widget.singleProduct.isFavourite;
+                      });
+                      if (widget.singleProduct.isFavourite) {
+                        appProvider.addFavouriteProduct(widget.singleProduct);
+                      } else {
+                        appProvider
+                            .removeFavouriteProduct(widget.singleProduct);
+                      }
+                    },
+                    icon: Icon(appProvider.getFavouriteProductList
+                            .contains(widget.singleProduct)
+                        ? Icons.favorite
+                        : Icons.favorite_border),
+                        iconSize: 40,
+                  ),
+                ],          
               ),
               // const Spacer(),
               const SizedBox(
@@ -136,10 +146,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                 children: [
                   OutlinedButton(
                     onPressed: () {
-                      // ProductModel productModel =
-                      //     widget.singleProduct.copyWith(qty: qty);
-                      // appProvider.addCartProduct(productModel);
-                      // showMessage("Added to Cart");
+                      ProductModel productModel =
+                          widget.singleProduct.copyWith(qty: qty);
+                      appProvider.addCartProduct(productModel);
+                      showMessage("Added to Cart");
                     },
                     child: const Text("ADD TO CART"),
                   ),
