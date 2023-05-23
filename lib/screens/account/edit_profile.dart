@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import '../models/user_model.dart';
-import '../provider/app_provider.dart';
-import '../widgets/primary_button.dart';
+import '../../models/user_model.dart';
+import '../../provider/app_provider.dart';
+import '../../widgets/primary_button.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});

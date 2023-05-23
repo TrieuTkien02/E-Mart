@@ -1,10 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api
-import 'package:e_mart/screens/account_screen.dart';
-import 'package:e_mart/screens/favourite_screen/favourite_screen.dart';
+import 'package:e_mart/screens/account/account_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'cart_screen/cart_screen.dart';
 import 'home.dart';
+import 'order_screen.dart';
 
 class CustomBottomBar extends StatefulWidget {
   const CustomBottomBar({
@@ -22,10 +22,8 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
   List<Widget> _buildScreens() => [
         const Home(),
         const CartScreen(),
-        const FavouriteScreen(),
+        const OrderScreen(),
         const AccountScreen(),
-        // const OrderScreen(),
-        // const AccountScreen(),
       ];
 
   List<PersistentBottomNavBarItem> _navBarsItems() => [

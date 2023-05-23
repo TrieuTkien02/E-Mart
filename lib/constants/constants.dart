@@ -45,46 +45,46 @@ showLoaderDialog(BuildContext context) {
 String getMessageFromErrorCode(String errorCode) {
   switch (errorCode) {
     case "ERROR_EMAIL_ALREADY_IN_USE":
-      return "Email already used. Go to login page.";
+      return "Email đã được sử dụng";
     case "account-exists-with-different-credential":
-      return "Email already used. Go to login page.";
+      return "Email đã được sử dụng";
     case "email-already-in-use":
-      return "Email already used. Go to login page.";
+      return "Email đã được sử dụng";
     case "ERROR_WRONG_PASSWORD":
     case "wrong-password":
-      return "Wrong Password ";
+      return "Sai mật khẩu";
     case "ERROR_USER_NOT_FOUND":
-      return "No user found with this email.";
+      return "Không tìm thấy người dùng nào với email này";
     case "user-not-found":
-      return "No user found with this email.";
+      return "Không tìm thấy người dùng nào với email này.";
     case "ERROR_USER_DISABLED":
-      return "User disabled.";
+      return "Người dùng bị vô hiệu hóa";
     case "user-disabled":
-      return "User disabled.";
+      return "Người dùng bị vô hiệu hóa.";
     case "ERROR_TOO_MANY_REQUESTS":
-      return "Too many requests to log into this account.";
+      return "Quá nhiều yêu cầu đăng nhập vào tài khoản này";
     case "operation-not-allowed":
-      return "Too many requests to log into this account.";
+      return "Quá nhiều yêu cầu đăng nhập vào tài khoản này";
     case "ERROR_OPERATION_NOT_ALLOWED":
-      return "Too many requests to log into this account.";
+      return "Quá nhiều yêu cầu đăng nhập vào tài khoản này";
     case "ERROR_INVALID_EMAIL":
-      return "Email address is invalid.";
+      return "Địa chỉ email không hợp lệ.";
     case "invalid-email":
-      return "Email address is invalid.";
+      return "Địa chỉ email không hợp lệ.";
     default:
-      return "Login failed. Please try again.";
+      return "Đăng nhập thất bại. Vui lòng thử lại";
   }
 }
 
 bool loginVaildation(String email, String password) {
   if (email.isEmpty && password.isEmpty) {
-    showMessage("Both Fields are empty");
+    showMessage("Chưa nhập thông tin");
     return false;
   } else if (email.isEmpty) {
-    showMessage("Email is Empty");
+    showMessage("Chưa nhập Email");
     return false;
   } else if (password.isEmpty) {
-    showMessage("Password is Empty");
+    showMessage("Chưa nhập mật khẩu");
     return false;
   } else {
     return true;
@@ -94,19 +94,19 @@ bool loginVaildation(String email, String password) {
 bool signUpVaildation(
     String email, String password, String name, String phone) {
   if (email.isEmpty && password.isEmpty && name.isEmpty && phone.isEmpty) {
-    showMessage("All Fields are empty");
+    showMessage("Chưa điền thông tin");
     return false;
   } else if (name.isEmpty) {
-    showMessage("Name is Empty");
+    showMessage("Chưa nhập tên");
     return false;
   } else if (email.isEmpty) {
-    showMessage("Email is Empty");
+    showMessage("Chưa nhập Email");
     return false;
   } else if (phone.isEmpty) {
-    showMessage("Phone is Empty");
+    showMessage("Chưa nhập số điện thoại");
     return false;
   } else if (password.isEmpty) {
-    showMessage("Password is Empty");
+    showMessage("Chưa nhập mật khẩu");
     return false;
   } else {
     return true;

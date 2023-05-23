@@ -53,7 +53,7 @@ class FirebaseAuthHelper {
       showLoaderDialog(context);
       _auth.currentUser!.updatePassword(password);
       Navigator.of(context, rootNavigator: true).pop();
-      showMessage("Password Changed");
+      showMessage("Đã đổi mật khẩu");
       Navigator.of(context).pop();
 
       return true;

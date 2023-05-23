@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
                           controller: search,
                           onChanged: (String value) {
                             searchProducts(value);
-                          },
+                          },               
                           decoration: const InputDecoration(
                               prefixIcon: Icon(Icons.search),
                               hintText: "Tìm kiếm sản phẩm...."),

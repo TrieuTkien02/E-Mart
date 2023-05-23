@@ -9,7 +9,7 @@ import '../models/product_model.dart';
 import '../models/user_model.dart';
 
 class AppProvider with ChangeNotifier {
-  //// Cart Work
+  // Cart Work
   final List<ProductModel> _cartProductList = [];
   final List<ProductModel> _buyProductList = [];
 
@@ -29,7 +29,7 @@ class AppProvider with ChangeNotifier {
 
   List<ProductModel> get getCartProductList => _cartProductList;
 
-  ///// Favourite ///////
+  //Favourite 
   final List<ProductModel> _favouriteProductList = [];
 
   void addFavouriteProduct(ProductModel productModel) {
@@ -44,7 +44,7 @@ class AppProvider with ChangeNotifier {
 
   List<ProductModel> get getFavouriteProductList => _favouriteProductList;
 
-  //// USer Information
+  // USer Information
   void getUserInfoFirebase() async {
     _userModel = await FirebaseFirestoreHelper.instance.getUserInformation();
     notifyListeners();
@@ -75,11 +75,11 @@ class AppProvider with ChangeNotifier {
       Navigator.of(context, rootNavigator: true).pop();
       Navigator.of(context).pop();
     }
-    showMessage("Successfully updated profile");
+    showMessage("Cập nhật thành công");
 
     notifyListeners();
   }
-  //////// TOTAL PRICE / // / // / / // / / / // /
+  // TOTAL PRICE 
 
   double totalPrice() {
     double totalPrice = 0.0;
@@ -102,8 +102,7 @@ class AppProvider with ChangeNotifier {
     _cartProductList[index].qty = qty;
     notifyListeners();
   }
-  ///////// BUY Product  / / // / / // / / / // /
-
+  // BUY Product 
   void addBuyProduct(ProductModel model) {
     _buyProductList.add(model);
     notifyListeners();

@@ -6,7 +6,7 @@ import '../constants/routes.dart';
 import '../models/product_model.dart';
 import '../provider/app_provider.dart';
 import 'cart_screen/cart_screen.dart';
-import 'checkout.dart';
+import 'check_out.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductModel singleProduct;

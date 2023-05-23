@@ -35,15 +35,18 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  firebase_auth: ^4.6.1
-  firebase_core: ^2.13.0
-  cloud_firestore: ^4.7.1
+  firebase_auth: ^4.3.0
+  firebase_core: ^2.8.0
+  cloud_firestore: ^4.4.5
   provider: ^6.0.5
-  firebase_storage: ^11.2.1
+  firebase_storage: ^11.0.16
   fluttertoast: ^8.2.1
-  firebase_messaging: ^14.6.1
   persistent_bottom_nav_bar: ^5.0.2
-  image_picker: ^0.8.7+5
+  image_picker: ^0.8.7+1
+  firebase_messaging: ^14.4.0
+  http: ^0.13.5
+  flutter_native_splash: ^2.2.19
+  flutter_stripe: ^9.2.0
   
 
 
@@ -62,6 +65,22 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
+flutter_native_splash:
+  # This package generates native code to customize Flutter's default white native splash screen
+  # with background color and splash image.
+  # Customize the parameters below, and run the following command in the terminal:
+  # flutter pub run flutter_native_splash:create
+  # To restore Flutter's default white splash screen, run the following command in the terminal:
+  # flutter pub run flutter_native_splash:remove
+
+  # color or background_image is the only required parameter.  Use color to set the background
+  # of your splash screen to a solid color.  Use background_image to set the background of your
+  # splash screen to a png image.  This is useful for gradients. The image will be stretch to the
+  # size of the app. Only one parameter can be used, color and background_image cannot both be set.
+  image: "assets/images/logo.png"
+  color: "#ffffff"
+  android: true
+  ios: true
 flutter:
 
   # The following line ensures that the Material Icons font is
@@ -71,7 +90,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/
+  - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

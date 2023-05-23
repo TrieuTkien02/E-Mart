@@ -1,12 +1,15 @@
 // ignore_for_file: unused_local_variable
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../constants/routes.dart';
-import '../firebase_helper/firebase_auth_helper.dart';
-import '../provider/app_provider.dart';
-import '../widgets/primary_button.dart';
+import '../../constants/routes.dart';
+import '../../firebase_helper/firebase_auth_helper.dart';
+import '../../provider/app_provider.dart';
+import '../../widgets/primary_button.dart';
+import '../about_us.dart';
+import '../order_screen.dart';
+import 'change_password.dart';
 import 'edit_profile.dart';
-import 'favourite_screen/favourite_screen.dart';
+import '../favourite_screen/favourite_screen.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -33,7 +36,7 @@ class _AccountScreenState extends State<AccountScreen> {
           ),
         ),
       ),
-      body: Column(
+      body: Column( 
         children: [
           Expanded(
             child: Column(
@@ -78,14 +81,14 @@ class _AccountScreenState extends State<AccountScreen> {
             flex: 2,
             child: Column(
               children: [
-                // ListTile(
-                //   onTap: () {
-                //     Routes.instance
-                //         .push(widget: const OrderScreen(), context: context);
-                //   },
-                //   leading: const Icon(Icons.shopping_bag_outlined),
-                //   title: const Text("Your Orders"),
-                // ),
+                ListTile(
+                  onTap: () {
+                    Routes.instance
+                        .push(widget: const OrderScreen(), context: context);
+                  },
+                  leading: const Icon(Icons.shopping_bag_outlined),
+                  title: const Text("Đơn hàng đã đặt"),
+                ),
                 ListTile(
                   onTap: () {
                     Routes.instance.push(
@@ -94,22 +97,22 @@ class _AccountScreenState extends State<AccountScreen> {
                   leading: const Icon(Icons.favorite_outline),
                   title: const Text("Yêu thích"),
                 ),
-                // ListTile(
-                //   onTap: () {
-                //     Routes.instance
-                //         .push(widget: const AboutUs(), context: context);
-                //   },
-                //   leading: const Icon(Icons.info_outline),
-                //   title: const Text("Thông tin của chúng tôi"),
-                // ),
-                // ListTile(
-                //   onTap: () {
-                //     Routes.instance
-                //         .push(widget: const ChangePassword(), context: context);
-                //   },
-                //   leading: const Icon(Icons.change_circle_outlined),
-                //   title: const Text("Đổi mật khẩu"),
-                // ),
+                ListTile(
+                  onTap: () {
+                    Routes.instance
+                        .push(widget: const AboutUs(), context: context);
+                  },
+                  leading: const Icon(Icons.info_outline),
+                  title: const Text("Thông tin của chúng tôi"),
+                ),
+                ListTile(
+                  onTap: () {
+                    Routes.instance
+                        .push(widget: const ChangePassword(), context: context);
+                  },
+                  leading: const Icon(Icons.change_circle_outlined),
+                  title: const Text("Đổi mật khẩu"),
+                ),
                 ListTile(
                   onTap: () {
                     FirebaseAuthHelper.instance.signOut();

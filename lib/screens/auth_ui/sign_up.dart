@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../constants/routes.dart';
 import '../../widgets/primary_button.dart';
-import '../../widgets/top_titles.dart';
 import 'package:e_mart/firebase_helper/firebase_auth_helper.dart';
 import 'package:e_mart/constants/constants.dart';
 import '../custom_bottom_bar.dart';
@@ -17,9 +16,9 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool isShowPassword = true;
-   TextEditingController password = TextEditingController();
+  TextEditingController password = TextEditingController();
   TextEditingController email = TextEditingController();
- 
+
   TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
   @override
@@ -31,9 +30,27 @@ class _SignUpState extends State<SignUp> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TopTitles(
-                  subtitle: "Chào mừng bạn đến với E-Mart",
-                  title: "Tạo tài khoản"),
+              const SizedBox(
+                height: kToolbarHeight + 12,
+              ),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Icon(Icons.arrow_back_ios)),
+              const SizedBox(
+                height: 12.0,
+              ),
+              const Text(
+                "Tạo tài khoản",
+                style: TextStyle(
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               const SizedBox(
                 height: 46.0,
               ),

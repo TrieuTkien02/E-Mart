@@ -4,6 +4,7 @@ import '../constants/routes.dart';
 import '../firebase_helper/firebase_firestore.dart';
 import '../models/product_model.dart';
 import '../provider/app_provider.dart';
+import '../stripe_helper/stripe_helper.dart';
 import '../widgets/primary_button.dart';
 import 'custom_bottom_bar.dart';
 
@@ -116,30 +117,29 @@ class _CheckoutState extends State<Checkout> {
                 appProvider.clearBuyProduct();
                 appProvider.addBuyProduct(widget.singleProduct);
 
-                // if (groupValue == 1) {
-                //   bool value = await FirebaseFirestoreHelper.instance
-                //       .uploadOrderedProductFirebase(
-                //           appProvider.getBuyProductList,
-                //           context,
-                //           "Thanh toán khi giao hàng");
+                if (groupValue == 1) {
+                  bool value = await FirebaseFirestoreHelper.instance
+                      .uploadOrderedProductFirebase(
+                          appProvider.getBuyProductList,
+                          context,
+                          "Thanh toán khi giao hàng");
 
-                //   appProvider.clearBuyProduct();
-                //   if (value) {
-                //     Future.delayed(const Duration(seconds: 2), () {
-                //       Routes.instance.push(
-                //           widget: const CustomBottomBar(), context: context);
-                //     });
-                //   }
-                // } else {
-                 
-                //   int value = double.parse(
-                //           appProvider.totalPriceBuyProductList().toString())
-                //       .round()
-                //       .toInt();
-                //   String totalPrice = (value * 100).toString();
-                //   // await StripeHelper.instance
-                //   //     .makePayment(totalPrice.toString(), context);
-                // }
+                  appProvider.clearBuyProduct();
+                  if (value) {
+                    Future.delayed(const Duration(seconds: 2), () {
+                      Routes.instance.push(
+                          widget: const CustomBottomBar(), context: context);
+                    });
+                  }
+                } else {
+                  int value = double.parse(
+                          appProvider.totalPriceBuyProductList().toString())
+                      .round()
+                      .toInt();
+                  String totalPrice = (value * 100).toString();
+                  await StripeHelper.instance
+                      .makePayment(totalPrice.toString(), context);
+                }
               },
             )
           ],

@@ -5,7 +5,6 @@ import '../../constants/constants.dart';
 import '../../constants/routes.dart';
 import '../../firebase_helper/firebase_auth_helper.dart';
 import '../../widgets/primary_button.dart';
-import '../../widgets/top_titles.dart';
 import '../custom_bottom_bar.dart';
 import 'sign_up.dart';
 
@@ -28,8 +27,27 @@ class _LoginState extends State<Login> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TopTitles(
-                  subtitle: "Chào mừng bạn đến với E-Mart", title: "Đăng nhập"),
+              const SizedBox(
+                height: kToolbarHeight + 12,
+              ),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Icon(Icons.arrow_back_ios)),
+              const SizedBox(
+                height: 12.0,
+              ),
+              const Text(
+                "Đăng nhập",
+                style: TextStyle(
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               const SizedBox(
                 height: 46.0,
               ),

@@ -50,12 +50,27 @@ class _SingleFavouriteItemState extends State<SingleFavouriteItem> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            FittedBox(
+                              child: Text(
+                                widget.singleProduct.name,
+                                style: const TextStyle(
+                                  fontSize: 11.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20.0,
+                            ),
                             Text(
-                              widget.singleProduct.name,
+                              "\$${widget.singleProduct.price.toString()}",
                               style: const TextStyle(
                                 fontSize: 18.0,
                                 fontWeight: FontWeight.bold,
                               ),
+                            ),
+                            const SizedBox(
+                              height: 10.0,
                             ),
                             CupertinoButton(
                               padding: EdgeInsets.zero,
@@ -76,13 +91,6 @@ class _SingleFavouriteItemState extends State<SingleFavouriteItem> {
                               ),
                             ),
                           ],
-                        ),
-                        Text(
-                          "\$${widget.singleProduct.price.toString()}",
-                          style: const TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
-                          ),
                         ),
                       ],
                     ),

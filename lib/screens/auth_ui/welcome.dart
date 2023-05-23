@@ -2,7 +2,6 @@ import 'package:e_mart/constants/asset_images.dart';
 import 'package:e_mart/screens/auth_ui/login.dart';
 import 'package:e_mart/screens/auth_ui/sign_up.dart';
 import 'package:e_mart/widgets/primary_button.dart';
-import 'package:e_mart/widgets/top_titles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../constants/routes.dart';
@@ -13,11 +12,26 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const TopTitles(
-              subtitle: "Mua bất cứ món gì khi dùng E-Mart",
-              title: "Chào mừng đến với E-Mart"),
+          const SizedBox(
+            height: kToolbarHeight,
+          ),
+          const Text(
+            "Chào mừng đến với E-Mart",
+            style: TextStyle(
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const Text(
+            "Mua bất cứ thứ gì khi dùng E-Mart",
+            style: TextStyle(
+              fontSize: 18.0,
+            ),
+          ),
           Center(
               child: Image.asset(
             AssetsImages.instance.AppLogo,
