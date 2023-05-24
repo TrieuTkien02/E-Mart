@@ -14,7 +14,7 @@
 
 * IDE: Visual Studio Code
 * Framework: Flutter
-* Language: Dart
+* Programming Language: Dart
 * Database: Firebase (Authentication, Firestore Database, Storage)
 
 **Người thực hiện: Trần Triệu Thiên - MSSV 20521954**
