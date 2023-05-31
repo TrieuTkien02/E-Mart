@@ -29,7 +29,7 @@ class _CartItemCheckoutState extends State<CartItemCheckout> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: const Text(
-          "CartItemCheckout",
+          "Thanh toán",
           style: TextStyle(
             color: Colors.black,
           ),
@@ -65,7 +65,7 @@ class _CartItemCheckoutState extends State<CartItemCheckout> {
                     width: 12.0,
                   ),
                   const Text(
-                    "Cash on Delivery",
+                    "Thanh toán khi nhận hàng",
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
@@ -100,7 +100,7 @@ class _CartItemCheckoutState extends State<CartItemCheckout> {
                     width: 12.0,
                   ),
                   const Text(
-                    "Pay Online",
+                    "Thanh toán Online",
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
@@ -113,14 +113,14 @@ class _CartItemCheckoutState extends State<CartItemCheckout> {
               height: 24.0,
             ),
             PrimaryButton(
-              title: "Continues",
+              title: "Tiếp tục",
               onPressed: () async {
                 if (groupValue == 1) {
                   bool value = await FirebaseFirestoreHelper.instance
                       .uploadOrderedProductFirebase(
                           appProvider.getBuyProductList,
                           context,
-                          "Cash on delivery");
+                          "Thanh toán khi nhận hàng");
 
                   appProvider.clearBuyProduct();
                   if (value) {
@@ -130,7 +130,6 @@ class _CartItemCheckoutState extends State<CartItemCheckout> {
                     });
                   }
                 } else {
-                 
                   int value = double.parse(
                           appProvider.totalPriceBuyProductList().toString())
                       .round()
